@@ -78,7 +78,7 @@ export default function App() {
     )
   }
 
-  const { people, days, activitiesMap } = tripData
+  const { people, days, activitiesMap, activityParticipants, signupIds } = tripData
 
   if (!activePerson || !people.find(p => p.name === activePerson)) {
     return (
@@ -121,6 +121,8 @@ export default function App() {
             activitiesMap={activitiesMap}
             weather={weather}
             flights={person.flights}
+            activityParticipants={activityParticipants}
+            signupIds={signupIds}
           />
         ))}
       </div>

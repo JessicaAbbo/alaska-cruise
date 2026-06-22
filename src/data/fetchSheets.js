@@ -169,11 +169,22 @@ function buildData(roster, itinerary, activities, signups, travel, lodging) {
       notes: (row['Notes'] || '').trim(),
     }))
 
+  // --- Participants map: activityId → [name, ...] (only for opt-in activities) ---
+  const activityParticipants = {}
+  Object.entries(signupMap).forEach(([name, ids]) => {
+    ids.forEach(id => {
+      if (!activityParticipants[id]) activityParticipants[id] = []
+      activityParticipants[id].push(name)
+    })
+  })
+
   return {
     people,
     days,
     activities: Object.values(activitiesMap),
     activitiesMap,
+    activityParticipants,
+    signupIds,
     lastUpdated: new Date().toISOString(),
   }
 }

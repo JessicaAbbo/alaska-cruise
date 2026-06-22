@@ -339,6 +339,92 @@
 }
 .tour-item:last-child { margin-bottom: 0; }
 .tour-item--flight { border-left-color: var(--soft-blue); }
+.tour-item--tappable {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: var(--pale-blue);
+  border: none;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+}
+.tour-item--tappable:active { background: var(--pale2); }
+.tour-tap-hint {
+  margin-left: 6px;
+  color: var(--soft-blue);
+  font-weight: 400;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+/* ── Activity modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(10,30,50,.6);
+  display: flex;
+  align-items: flex-end;
+}
+.modal-sheet {
+  background: var(--white);
+  border-radius: 20px 20px 0 0;
+  padding: 24px 20px 48px;
+  width: 100%;
+  max-height: 80dvh;
+  overflow-y: auto;
+}
+.modal-close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text-muted);
+  padding: 0 4px;
+  line-height: 1;
+}
+.modal-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 4px;
+  padding-right: 32px;
+}
+.modal-operator { font-size: 14px; color: var(--text-muted); margin-bottom: 2px; }
+.modal-time { font-size: 14px; color: var(--blue); font-weight: 600; margin-bottom: 16px; }
+.modal-section { margin-top: 18px; }
+.modal-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.modal-body-text { font-size: 15px; color: var(--text); line-height: 1.55; }
+.modal-participants {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.modal-participants li {
+  background: var(--pale-blue);
+  border: 1px solid var(--pale2);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 14px;
+  color: var(--navy);
+}
+.modal-whole-group {
+  font-size: 15px;
+  color: var(--blue);
+  font-weight: 600;
+}
+.modal-muted { font-size: 14px; color: var(--text-muted); font-style: italic; }
 .tour-name { font-size: 15px; font-weight: 700; color: var(--navy); }
 .tour-operator { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
 .tour-time { font-size: 13px; color: var(--blue); font-weight: 600; margin-top: 4px; }
