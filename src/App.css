@@ -1,0 +1,419 @@
+/* ── App shell ── */
+.app { min-height: 100dvh; display: flex; flex-direction: column; }
+
+/* ── Offline banner ── */
+.offline-banner {
+  background: #c0392b;
+  color: #fff;
+  text-align: center;
+  padding: 6px 16px;
+  font-size: 13px;
+}
+.stale-banner {
+  background: #e67e22;
+  color: #fff;
+  text-align: center;
+  padding: 6px 16px;
+  font-size: 13px;
+}
+
+/* ── Name Picker ── */
+.picker-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 60px;
+  gap: 24px;
+}
+
+/* Hero banner */
+.picker-hero {
+  width: 100%;
+  background: linear-gradient(160deg, var(--navy) 0%, #1a5490 55%, var(--blue) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 24px 32px;
+  gap: 16px;
+}
+.picker-logo-svg {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
+}
+.picker-title-block {
+  text-align: center;
+  color: var(--white);
+}
+.picker-family {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--soft-blue);
+  margin-bottom: 4px;
+}
+.picker-h1 {
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: -.01em;
+  line-height: 1.05;
+  color: var(--white);
+  margin: 0;
+}
+.picker-ship {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pale-blue);
+  margin-top: 6px;
+}
+.picker-dates {
+  font-size: 14px;
+  color: var(--soft-blue);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.picker-prompt {
+  color: var(--text-muted);
+  font-size: 15px;
+  text-align: center;
+  padding-top: 4px;
+}
+.family-group {
+  width: 100%;
+  max-width: 420px;
+}
+.family-group h2 {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 0 4px 8px;
+  border-bottom: 1px solid var(--pale2);
+  margin-bottom: 8px;
+}
+.name-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 6px;
+  background: var(--white);
+  border: 1.5px solid var(--pale2);
+  border-radius: var(--radius);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: background .15s, border-color .15s;
+  gap: 10px;
+}
+.name-btn:active { background: var(--pale-blue); border-color: var(--soft-blue); }
+.name-age {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── Sticky header ── */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  color: var(--white);
+  padding: 14px 16px 12px;
+  box-shadow: 0 2px 10px rgba(16,56,91,.25);
+}
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.header-name {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255,255,255,.15);
+  color: var(--white);
+}
+.badge-cabin { background: rgba(91,155,213,.35); }
+.badge-dietary { background: rgba(255,200,80,.25); color: #ffe58a; }
+.home-btn {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.home-btn:active { background: rgba(255,255,255,.3); }
+.switch-btn {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.switch-btn:active { background: rgba(255,255,255,.3); }
+
+/* ── Switch overlay ── */
+.switch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10,30,50,.6);
+  display: flex;
+  align-items: flex-end;
+}
+.switch-sheet {
+  background: var(--white);
+  border-radius: 20px 20px 0 0;
+  padding: 20px 16px 40px;
+  width: 100%;
+  max-height: 75dvh;
+  overflow-y: auto;
+}
+.switch-sheet h3 {
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.switch-close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text-muted);
+  padding: 0 4px;
+}
+
+/* ── Flights section ── */
+.flights-section {
+  margin: 16px 16px 0;
+}
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+  border: 1.5px solid var(--pale2);
+  border-radius: var(--radius);
+  padding: 13px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  box-shadow: var(--shadow);
+  width: 100%;
+  text-align: left;
+}
+.collapsible-header.open {
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.chevron { transition: transform .2s; display: inline-block; }
+.chevron.open { transform: rotate(180deg); }
+.flight-card {
+  background: var(--white);
+  border: 1.5px solid var(--pale2);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 12px 16px;
+  box-shadow: var(--shadow);
+}
+.flight-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 6px 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--pale-blue);
+  font-size: 14px;
+  align-items: start;
+}
+.flight-row:last-child { border-bottom: none; }
+.flight-leg { color: var(--text-muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.flight-info {}
+.flight-route { font-weight: 700; color: var(--navy); font-size: 15px; }
+.flight-times { color: var(--text-muted); font-size: 13px; }
+.flight-carrier { color: var(--blue); font-size: 13px; }
+.flight-conf { color: var(--text-muted); font-size: 12px; }
+
+/* ── Day cards ── */
+.days-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 40px;
+}
+.day-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1.5px solid var(--pale2);
+}
+.day-card-header {
+  background: var(--navy);
+  padding: 14px 16px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.day-date-block {
+  text-align: center;
+  min-width: 48px;
+}
+.day-month { color: var(--soft-blue); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.day-num { color: var(--white); font-size: 32px; font-weight: 900; line-height: 1; }
+.day-dow { color: var(--soft-blue); font-size: 11px; font-weight: 600; }
+.day-port-block { flex: 1; }
+.day-port { color: var(--white); font-size: 18px; font-weight: 800; line-height: 1.2; }
+.day-type-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 9px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.type-port    { background: #1e7a4a; color: #fff; }
+.type-sea     { background: rgba(91,155,213,.35); color: #c8e4ff; }
+.type-land    { background: rgba(255,200,80,.3); color: #ffe58a; }
+.type-embark  { background: rgba(91,155,213,.35); color: #c8e4ff; }
+.type-debark  { background: rgba(91,155,213,.35); color: #c8e4ff; }
+.type-default { background: rgba(255,255,255,.15); color: var(--white); }
+
+.day-card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 12px; }
+
+.ship-times {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.ship-time-item strong { color: var(--navy); font-weight: 700; }
+
+/* ── Tours ── */
+.tours-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.tour-item {
+  background: var(--pale-blue);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+}
+.tour-item:last-child { margin-bottom: 0; }
+.tour-item--flight { border-left-color: var(--soft-blue); }
+.tour-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+.tour-operator { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+.tour-time { font-size: 13px; color: var(--blue); font-weight: 600; margin-top: 4px; }
+.no-tours {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 2px 0;
+}
+
+/* ── Weather ── */
+.weather-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text);
+  flex-wrap: wrap;
+}
+.weather-emoji { font-size: 22px; }
+.weather-temps { font-weight: 700; color: var(--navy); }
+.weather-label { color: var(--text-muted); }
+.weather-precip { font-size: 12px; color: var(--soft-blue); }
+.weather-na { font-size: 13px; color: var(--text-muted); font-style: italic; }
+
+/* ── Notes slot ── */
+.notes-row {
+  font-size: 14px;
+  color: var(--text);
+  border-top: 1px solid var(--pale2);
+  padding-top: 10px;
+}
+.notes-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.notes-empty { color: var(--text-muted); font-style: italic; }
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 20px 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.footer a { color: var(--soft-blue); }
+
+/* ── Loading / error ── */
+.loading-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+}
+.spinner {
+  width: 40px; height: 40px;
+  border: 4px solid var(--pale2);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.error-box {
+  background: #fee;
+  border: 1.5px solid #fcc;
+  border-radius: var(--radius);
+  padding: 20px;
+  max-width: 360px;
+  text-align: center;
+  color: #a00;
+}
