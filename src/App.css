@@ -263,6 +263,113 @@
 .flight-carrier { color: var(--blue); font-size: 13px; }
 .flight-conf { color: var(--text-muted); font-size: 12px; }
 
+/* ── Tab bar ── */
+.tab-bar {
+  display: flex;
+  background: var(--white);
+  border-bottom: 2px solid var(--pale2);
+  position: sticky;
+  top: 78px; /* below sticky-header */
+  z-index: 90;
+}
+.tab-btn {
+  flex: 1;
+  padding: 12px 8px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color .15s, border-color .15s;
+}
+.tab-btn--active {
+  color: var(--navy);
+  border-bottom-color: var(--blue);
+}
+
+/* ── Packing list page ── */
+.packing-page {
+  flex: 1;
+  padding-bottom: 48px;
+}
+.packing-hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 20px 20px 16px;
+}
+.packing-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 2px;
+}
+.packing-subtitle {
+  font-size: 13px;
+  opacity: .7;
+  margin: 0 0 14px;
+}
+.packing-progress-bar {
+  height: 8px;
+  background: rgba(255,255,255,.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.packing-progress-fill {
+  height: 100%;
+  background: var(--soft-blue);
+  border-radius: 999px;
+  transition: width .25s ease;
+}
+.packing-progress-label {
+  font-size: 13px;
+  opacity: .75;
+  margin-top: 6px;
+}
+.packing-body {
+  padding: 16px 16px 0;
+}
+.packing-section {
+  margin-bottom: 20px;
+}
+.packing-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--navy);
+  border-bottom: 2px solid var(--navy);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+.packing-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 4px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text);
+  border-bottom: 1px solid var(--pale-blue);
+}
+.packing-item:last-child { border-bottom: none; }
+.packing-item-text { line-height: 1.4; }
+.packing-item--done .packing-item-text {
+  text-decoration: line-through;
+  opacity: .45;
+}
+.packing-reset-btn {
+  margin-top: 8px;
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.packing-reset-btn:active { background: var(--pale-blue); }
+
 /* ── Day cards ── */
 .days-list {
   padding: 16px;

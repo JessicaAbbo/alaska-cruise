@@ -5,16 +5,18 @@ import { fetchWeather } from './data/fetchWeather.js'
 import NamePicker from './components/NamePicker.jsx'
 import SwitchPerson from './components/SwitchPerson.jsx'
 import DayCard from './components/DayCard.jsx'
+import PackingList from './components/PackingList.jsx'
 
 const PERSON_KEY = 'cruise_active_person'
 
 export default function App() {
-  const [status, setStatus] = useState('loading') // loading | error | ready
+  const [status, setStatus] = useState('loading')
   const [tripData, setTripData] = useState(null)
   const [stale, setStale] = useState(false)
   const [weather, setWeather] = useState({})
   const [isOnline, setIsOnline] = useState(navigator.onLine)
   const [activePerson, setActivePerson] = useState(() => localStorage.getItem(PERSON_KEY) || '')
+  const [activeTab, setActiveTab] = useState('itinerary') // 'itinerary' | 'packing'
 
   useEffect(() => {
     const onOnline = () => setIsOnline(true)
@@ -48,6 +50,7 @@ export default function App() {
   const selectPerson = (name) => {
     setActivePerson(name)
     localStorage.setItem(PERSON_KEY, name)
+    setActiveTab('itinerary')
   }
 
   if (status === 'loading') {
@@ -112,29 +115,51 @@ export default function App() {
         </div>
       </div>
 
-      <div className="days-list">
-        {days.map(day => (
-          <DayCard
-            key={day.date}
-            day={day}
-            personTours={person.tours?.[day.date] || []}
-            activitiesMap={activitiesMap}
-            weather={weather}
-            flights={person.flights}
-            activityParticipants={activityParticipants}
-            signupIds={signupIds}
-          />
-        ))}
+      <div className="tab-bar">
+        <button
+          className={`tab-btn${activeTab === 'itinerary' ? ' tab-btn--active' : ''}`}
+          onClick={() => setActiveTab('itinerary')}
+        >
+          🗓 Itinerary
+        </button>
+        <button
+          className={`tab-btn${activeTab === 'packing' ? ' tab-btn--active' : ''}`}
+          onClick={() => setActiveTab('packing')}
+        >
+          🧳 Packing
+        </button>
       </div>
 
-      <div className="footer">
-        <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Weather by Open-Meteo</a>
-        {' · '}
-        Anthem of the Seas · Aug 2–12, 2026
-        {tripData.lastUpdated && (
-          <div>Data synced {new Date(tripData.lastUpdated).toLocaleString()}</div>
-        )}
-      </div>
+      {activeTab === 'itinerary' && (
+        <>
+          <div className="days-list">
+            {days.map(day => (
+              <DayCard
+                key={day.date}
+                day={day}
+                personTours={person.tours?.[day.date] || []}
+                activitiesMap={activitiesMap}
+                weather={weather}
+                flights={person.flights}
+                activityParticipants={activityParticipants}
+                signupIds={signupIds}
+              />
+            ))}
+          </div>
+          <div className="footer">
+            <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Weather by Open-Meteo</a>
+            {' · '}
+            Anthem of the Seas · Aug 2–12, 2026
+            {tripData.lastUpdated && (
+              <div>Data synced {new Date(tripData.lastUpdated).toLocaleString()}</div>
+            )}
+          </div>
+        </>
+      )}
+
+      {activeTab === 'packing' && (
+        <PackingList personId={activePerson} />
+      )}
     </div>
   )
 }
