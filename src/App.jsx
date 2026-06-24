@@ -6,6 +6,7 @@ import NamePicker from './components/NamePicker.jsx'
 import SwitchPerson from './components/SwitchPerson.jsx'
 import DayCard from './components/DayCard.jsx'
 import PackingList from './components/PackingList.jsx'
+import Countdown from './components/Countdown.jsx'
 
 const PERSON_KEY = 'cruise_active_person'
 

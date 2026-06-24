@@ -370,6 +370,40 @@
 }
 .packing-reset-btn:active { background: var(--pale-blue); }
 
+/* ── Countdown ── */
+.countdown-card {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  width: 100%;
+  max-width: 420px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  box-shadow: var(--shadow);
+}
+.countdown-card--active {
+  justify-content: center;
+  background: linear-gradient(120deg, #1a5490, var(--navy));
+}
+.countdown-num {
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--soft-blue);
+}
+.countdown-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+}
+.countdown-card--active .countdown-label {
+  font-size: 22px;
+  text-align: center;
+}
+
 /* ── Day cards ── */
 .days-list {
   padding: 16px;

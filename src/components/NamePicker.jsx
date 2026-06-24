@@ -1,3 +1,5 @@
+import Countdown from './Countdown.jsx'
+
 function AlaskaLogo() {
   return (
     <svg viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" className="picker-logo-svg" aria-hidden="true">
@@ -60,6 +62,7 @@ export default function NamePicker({ people, onSelect }) {
           <div className="picker-dates">August 2 – 12, 2026</div>
         </div>
       </div>
+      <Countdown />
       <p className="picker-prompt">Who are you? Tap your name to see your personal itinerary.</p>
       {Object.entries(groups).map(([family, members]) => (
         <div className="family-group" key={family}>
