@@ -17,7 +17,7 @@ export default function ActivityModal({ act, isOptIn, participants, onClose }) {
         {act.operator && <div className="modal-operator">{act.operator}</div>}
         {(act.meetingTime || act.startEnd) && (
           <div className="modal-time">
-            {act.meetingTime && <>Meet {act.meetingTime}</>}
+            {act.meetingTime && <>Meet {act.meetingTime}{act.meetingPlace ? ` @ ${act.meetingPlace}` : ''}</>}
             {act.meetingTime && act.startEnd && ' · '}
             {act.startEnd}
           </div>

@@ -13,6 +13,8 @@ export const SHEET_URLS = {
 // Update this whenever a new activity is added to the sheet.
 export const SIGNUP_COLUMN_MAP = {
   'Wildlife Catamaran':         'wildlife-on-catamaran',
+  'Shuttle bus 1':              'shuttle-bus-1',
+  'Shuttle bus 2':              'shuttle-bus-2',
   'Sitka Sound Kayak':          'sitka-sound-kayak-adventure',
   'Bears and Totem':            'fortress-of-the-bear-and-totem-park',
   'White Pass Railway':         'white-pass-scenic-railway',

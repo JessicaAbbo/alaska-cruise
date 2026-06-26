@@ -128,7 +128,7 @@ export default function DayCard({ day, personTours, activitiesMap, weather, flig
                 {act.operator && <div className="tour-operator">{act.operator}</div>}
                 {(act.meetingTime || act.startEnd) && (
                   <div className="tour-time">
-                    {act.meetingTime && <>Meet {act.meetingTime}</>}
+                    {act.meetingTime && <>Meet {act.meetingTime}{act.meetingPlace ? ` @ ${act.meetingPlace}` : ''}</>}
                     {act.meetingTime && act.startEnd && ' · '}
                     {act.startEnd}
                   </div>
