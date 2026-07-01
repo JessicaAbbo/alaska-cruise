@@ -62,7 +62,7 @@ function buildData(roster, itinerary, activities, signups, travel, lodging) {
       operator: (row['Tour operator'] || '').trim(),
       description: (row['Description'] || '').trim(),
       meetingTime: (row['Meeting time'] || '').trim(),
-      meetingPlace: (row['Meeting Place'] || '').trim(),
+      meetingPlace: (row['Meeting place'] || '').trim(),
       startEnd: (row['Start-End'] || '').trim(),
       duration: (row['Duration'] || '').trim(),
       ageRange: (row['Age Range'] || '').trim(),

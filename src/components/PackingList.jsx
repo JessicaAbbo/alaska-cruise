@@ -143,6 +143,9 @@ export default function PackingList({ personId = "guest" }) {
 
   return (
     <div className="packing-page">
+      <div className="packing-notice">
+        ⚠️ Los ganchitos que pongan se mantienen si siempre usan el mismo browser
+      </div>
       <div className="packing-hero">
         <h2 className="packing-title">Packing List</h2>
         <p className="packing-subtitle">Alaska Cruise · August 2026</p>

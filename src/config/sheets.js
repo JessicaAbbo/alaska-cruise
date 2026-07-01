@@ -12,10 +12,12 @@ export const SHEET_URLS = {
 // Explicit mapping: Signups column header → activityId (assigned below in activities config)
 // Update this whenever a new activity is added to the sheet.
 export const SIGNUP_COLUMN_MAP = {
-  'Wildlife Catamaran':         'wildlife-on-catamaran',
+  'Wildlife Catamaran':         'sitka-wildlife-cruise',
   'Shuttle bus 1':              'shuttle-bus-1',
+  'Kayak Grupo 1':              'kayak-grupo-1',
   'Shuttle bus 2':              'shuttle-bus-2',
-  'Sitka Sound Kayak':          'sitka-sound-kayak-adventure',
+  'Kayak Grupo 2':              'kayak-grupo-2',
+  'Shuttle bus 3':              'shuttle-bus-3',
   'Bears and Totem':            'fortress-of-the-bear-and-totem-park',
   'White Pass Railway':         'white-pass-scenic-railway',
   'Helicopter ride':            'helicopter-ride',
@@ -23,5 +25,5 @@ export const SIGNUP_COLUMN_MAP = {
   'Whale Watching':             'whale-watching-and-mendenhall-glacier',
   'Butchart Gardens':           'butchart-and-butterfly-gardens',
   'Self-guided Inner Harbour':  'inner-harbour-walk',
-  'Boeing Factory':             'boeing-factory-tour',
+  'Boeing Factory':             'boeing-factory-kerry-park-group-photos',
 }
