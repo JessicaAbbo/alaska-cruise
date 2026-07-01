@@ -7,6 +7,7 @@ import SwitchPerson from './components/SwitchPerson.jsx'
 import DayCard from './components/DayCard.jsx'
 import PackingList from './components/PackingList.jsx'
 import Countdown from './components/Countdown.jsx'
+import WelcomeModal, { shouldShowWelcome, markWelcomeSeen } from './components/WelcomeModal.jsx'
 
 const PERSON_KEY = 'cruise_active_person'
 
@@ -18,6 +19,7 @@ export default function App() {
   const [isOnline, setIsOnline] = useState(navigator.onLine)
   const [activePerson, setActivePerson] = useState(() => localStorage.getItem(PERSON_KEY) || '')
   const [activeTab, setActiveTab] = useState('itinerary') // 'itinerary' | 'packing'
+  const [showWelcome, setShowWelcome] = useState(() => shouldShowWelcome())
 
   useEffect(() => {
     const onOnline = () => setIsOnline(true)
@@ -89,6 +91,9 @@ export default function App() {
       <div className="app">
         {!isOnline && <div className="offline-banner">You're offline — showing cached data.</div>}
         <NamePicker people={people} onSelect={selectPerson} />
+        {showWelcome && (
+          <WelcomeModal onDismiss={() => { markWelcomeSeen(); setShowWelcome(false) }} />
+        )}
       </div>
     )
   }
