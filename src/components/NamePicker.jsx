@@ -43,7 +43,7 @@ function AlaskaLogo() {
   )
 }
 
-export default function NamePicker({ people, onSelect }) {
+export default function NamePicker({ people, onSelect, onShowMap }) {
   const groups = {}
   people.forEach(p => {
     const g = p.familyUnit || 'Other'
@@ -63,6 +63,7 @@ export default function NamePicker({ people, onSelect }) {
         </div>
       </div>
       <Countdown />
+      <button className="room-map-btn" onClick={onShowMap}>🗺 Room Map</button>
       <p className="picker-prompt">Who are you? Tap your name to see your personal itinerary.</p>
       {Object.entries(groups).map(([family, members]) => (
         <div className="family-group" key={family}>

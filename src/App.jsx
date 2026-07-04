@@ -8,6 +8,7 @@ import DayCard from './components/DayCard.jsx'
 import PackingList from './components/PackingList.jsx'
 import Countdown from './components/Countdown.jsx'
 import WelcomeModal, { shouldShowWelcome, markWelcomeSeen } from './components/WelcomeModal.jsx'
+import RoomMap from './components/RoomMap.jsx'
 
 const PERSON_KEY = 'cruise_active_person'
 
@@ -20,6 +21,7 @@ export default function App() {
   const [activePerson, setActivePerson] = useState(() => localStorage.getItem(PERSON_KEY) || '')
   const [activeTab, setActiveTab] = useState('itinerary') // 'itinerary' | 'packing'
   const [showWelcome, setShowWelcome] = useState(() => shouldShowWelcome())
+  const [showMap, setShowMap] = useState(false)
 
   useEffect(() => {
     const onOnline = () => setIsOnline(true)
@@ -56,6 +58,24 @@ export default function App() {
     setActiveTab('itinerary')
   }
 
+  // Scroll to the appropriate day card after the itinerary renders
+  useEffect(() => {
+    if (!activePerson || !tripData) return
+    // Wait one frame for the DOM to paint
+    const raf = requestAnimationFrame(() => {
+      const dates = tripData.days.map(d => d.date).sort()
+      if (!dates.length) return
+      const todayStr = new Date().toLocaleDateString('en-CA') // YYYY-MM-DD in local time
+      let target
+      if (todayStr < dates[0]) target = dates[0]
+      else if (todayStr > dates[dates.length - 1]) target = dates[dates.length - 1]
+      else target = dates.find(d => d === todayStr) || dates[0]
+      const el = document.getElementById(`day-${target}`)
+      if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' })
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [activePerson, tripData])
+
   if (status === 'loading') {
     return (
       <div className="app">
@@ -90,10 +110,11 @@ export default function App() {
     return (
       <div className="app">
         {!isOnline && <div className="offline-banner">You're offline — showing cached data.</div>}
-        <NamePicker people={people} onSelect={selectPerson} />
+        <NamePicker people={people} onSelect={selectPerson} onShowMap={() => setShowMap(true)} />
         {showWelcome && (
           <WelcomeModal onDismiss={() => { markWelcomeSeen(); setShowWelcome(false) }} />
         )}
+        {showMap && <RoomMap onClose={() => setShowMap(false)} />}
       </div>
     )
   }
@@ -130,7 +151,7 @@ export default function App() {
         </button>
         <button
           className={`tab-btn${activeTab === 'packing' ? ' tab-btn--active' : ''}`}
-          onClick={() => setActiveTab('packing')}
+          onClick={() => { setActiveTab('packing'); window.scrollTo({ top: 0, behavior: 'instant' }) }}
         >
           🧳 Packing
         </button>

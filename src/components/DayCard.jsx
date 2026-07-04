@@ -67,7 +67,7 @@ export default function DayCard({ day, personTours, activitiesMap, weather, flig
   const scheduleItems = buildScheduleItems(tourIds, activitiesMap, dayFlights)
 
   return (
-    <div className="day-card">
+    <div className="day-card" id={`day-${day.date}`}>
       <div className="day-card-header">
         <div className="day-date-block">
           <div className="day-month">{month}</div>
