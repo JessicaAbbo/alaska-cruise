@@ -35,6 +35,7 @@
   flex-direction: column;
   align-items: center;
   padding: 36px 24px 32px;
+  padding-top: calc(36px + env(safe-area-inset-top));
   gap: 16px;
 }
 .picker-logo-svg {
@@ -92,6 +93,10 @@
   box-shadow: var(--shadow);
 }
 .room-map-btn:active { background: var(--pale-blue); border-color: var(--soft-blue); }
+.rc-app-link {
+  text-decoration: none;
+  justify-content: center;
+}
 
 /* ── Room map viewer ── */
 .map-overlay {
@@ -108,6 +113,7 @@
   justify-content: space-between;
   background: var(--navy);
   padding: 14px 16px;
+  padding-top: calc(14px + env(safe-area-inset-top));
   flex-shrink: 0;
 }
 .map-topbar-title {
@@ -203,6 +209,7 @@
   background: var(--navy);
   color: var(--white);
   padding: 14px 16px 12px;
+  padding-top: calc(14px + env(safe-area-inset-top));
   box-shadow: 0 2px 10px rgba(16,56,91,.25);
 }
 .header-top {

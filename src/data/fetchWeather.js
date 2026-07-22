@@ -21,9 +21,15 @@ export async function fetchWeather() {
   const dates = Object.keys(PORT_COORDS).filter(d => PORT_COORDS[d])
   const result = { ...cache }
 
+  // Open-Meteo allows at most 16 days ahead; cap end_date to avoid an error response
+  const maxForecastDate = new Date()
+  maxForecastDate.setDate(maxForecastDate.getDate() + 15)
+  const maxDateStr = maxForecastDate.toLocaleDateString('en-CA') // YYYY-MM-DD local
+
   // Batch by unique coordinates to reduce API calls
   const coordGroups = {}
   dates.forEach(date => {
+    if (date > maxDateStr) return // skip dates beyond the forecast window
     const c = PORT_COORDS[date]
     if (!c) return
     const key = `${c.lat},${c.lng}`
