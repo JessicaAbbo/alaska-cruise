@@ -35,7 +35,6 @@ export default function SwitchPerson({ people, current, onSelect }) {
                   >
                     <span>{p.name === current ? '✓' : '👤'}</span>
                     <span>{p.name}</span>
-                    {p.age && <span className="name-age">Age {p.age}</span>}
                   </button>
                 ))}
               </div>

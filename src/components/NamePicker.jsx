@@ -72,7 +72,6 @@ export default function NamePicker({ people, onSelect, onShowMap }) {
             <button key={p.name} className="name-btn" onClick={() => onSelect(p.name)}>
               <span>👤</span>
               <span>{p.name}</span>
-              {p.age && <span className="name-age">Age {p.age}</span>}
             </button>
           ))}
         </div>
