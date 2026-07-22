@@ -64,14 +64,6 @@ export default function NamePicker({ people, onSelect, onShowMap }) {
       </div>
       <Countdown />
       <button className="room-map-btn" onClick={onShowMap}>🗺 Room Map</button>
-      <a
-        className="room-map-btn rc-app-link"
-        href="https://www.royalcaribbean.com/the-royal-app"
-        target="_blank"
-        rel="noreferrer"
-      >
-        👑 Royal Caribbean App
-      </a>
       <p className="picker-prompt">Who are you? Tap your name to see your personal itinerary.</p>
       {Object.entries(groups).map(([family, members]) => (
         <div className="family-group" key={family}>
